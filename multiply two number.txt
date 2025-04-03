@@ -1,0 +1,64 @@
+import React, { useState } from "react";
+
+const App = () => {
+  const [num1, setNum1] = useState("");
+  const [num2, setNum2] = useState("");
+  const [result, setResult] = useState(null);
+
+  const multiply = () => {
+    const product = parseFloat(num1) * parseFloat(num2);
+    setResult(product);
+  };
+
+  const clear = () => {
+    setNum1("");
+    setNum2("");
+    setResult("");
+  };
+
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen bg-blue-700 p-4">
+      <h1 className="text-3xl text-white">Multiplication of Two Numbers</h1>
+
+      <div className="space-x-4 m-t- mt-6">
+        <input
+          type="text"
+          value={num1}
+          onChange={(e) => setNum1(e.target.value)}
+          placeholder="Enter first number"
+          className="p-2 border border-white bg-white rounded-md w-64 text-cente"
+        />
+
+        <input
+          type="text"
+          value={num2}
+          onChange={(e) => setNum2(e.target.value)}
+          placeholder="Enter second number"
+          className="p-2 border border-white bg-white rounded-md w-64 text-cente"
+        />
+      </div>
+
+      <div className="mt-4 space-x-4">
+        <button
+          onClick={multiply}
+          className="bg-red-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 focus:outline-none"
+        >
+          Result
+        </button>
+
+        <button
+          onClick={clear}
+          className="bg-yellow-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 focus:outline-none"
+        >
+          Clear
+        </button>
+      </div>
+
+      {result !== null && (
+        <h2 className="mt-6 text-2xl font-semibold text-white">Result: {result}</h2>
+      )}
+
+    </div>
+  );
+};
+export default App;
